@@ -252,7 +252,7 @@
                         <li class="nav-item {{ Request::segment(1) === 'home' ? 'active' : '' }}">
                             <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
-                        <li class="menu-header">Menu</li>
+                        <li class="menu-header">Daftar Menu</li>
                         <li class="nav-item {{ Request::segment(1) === 'produk' ? 'active' : '' }}">
                             <a href="{{ route('produk.index') }}" class="nav-link"><i class="fas fa-columns"></i> <span>Produk</span></a>
                         </li>
