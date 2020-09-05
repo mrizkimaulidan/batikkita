@@ -34,7 +34,7 @@
           <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $produk->nama_produk }}</td>
-            <td>{{ $produk->deskripsi }}</td>
+            <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
             <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
             <td>{{ $produk->harga }}</td>
             <td>{{ $produk->gambar }}</td>
