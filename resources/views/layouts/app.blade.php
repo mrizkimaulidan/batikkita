@@ -256,6 +256,9 @@
                         <li class="nav-item {{ Request::segment(1) === 'produk' ? 'active' : '' }}">
                             <a href="{{ route('produk.index') }}" class="nav-link"><i class="fas fa-columns"></i> <span>Produk</span></a>
                         </li>
+                        <li class="nav-item {{ Request::segment(1) === 'kategori' ? 'active' : '' }}">
+                            <a href="{{ route('kategori.index') }}" class="nav-link"><i class="fas fa-columns"></i> <span>Kategori</span></a>
+                        </li>
                         <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
