@@ -62,10 +62,10 @@
             </li>
             <li class="menu-header">Daftar Menu</li>
             <li class="nav-item {{ Request::segment(1) === 'produk' ? 'active' : '' }}">
-              <a href="{{ route('produk.index') }}" class="nav-link"><i class="fas fa-columns"></i> <span>Produk</span></a>
+              <a href="{{ route('produk.index') }}" class="nav-link"><i class="fas fa-sitemap"></i> <span>Produk</span></a>
             </li>
             <li class="nav-item {{ Request::segment(1) === 'kategori' ? 'active' : '' }}">
-              <a href="{{ route('kategori.index') }}" class="nav-link"><i class="fas fa-columns"></i> <span>Kategori</span></a>
+              <a href="{{ route('kategori.index') }}" class="nav-link"><i class="fas fa-list"></i> <span>Kategori</span></a>
             </li>
         </aside>
       </div>
