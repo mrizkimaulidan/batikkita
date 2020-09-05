@@ -49,5 +49,15 @@ class ProdukTableSeeder extends Seeder
                 'gambar' => 'sekar-jagad-solo.jpg'
             ],
         ];
+
+        for ($i = 0; $i < count($products); $i++) {
+            DB::table('produk')->insert([
+                'nama_produk' => $products[$i]['nama_produk'],
+                'id_kategori' => $products[$i]['id_kategori'],
+                'harga' => $products[$i]['harga'],
+                'deskripsi' => $products[$i]['deskripsi'],
+                'gambar' => $products[$i]['gambar']
+            ]);
+        }
     }
 }
