@@ -17,41 +17,43 @@
           Tambah Data
         </button>
       </div>
-      <table class="table" id="datatable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nama Produk</th>
-            <th>Deskripsi</th>
-            <th>Kategori</th>
-            <th>Harga</th>
-            <th>Gambar</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($data_produk as $produk)
-          <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $produk->nama_produk }}</td>
-            <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
-            <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
-            <td>{{ $produk->harga }}</td>
-            <td><img class="img-thumbnail" width="80" src="{{ url('uploads/' . $produk->gambar) }}" alt="product"></td>
-            <td>
-              <a href="{{ route('produk.edit', $produk->id_produk) }}">
-                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
-              </a>
-              <form action="{{ route('produk.destroy', $produk->id_produk) }}" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                @csrf
-                <button class="btn btn-danger btn-sm mt-2"><i class="fas fa-trash"></i></button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table" id="datatable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nama Produk</th>
+              <th>Deskripsi</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Gambar</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($data_produk as $produk)
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $produk->nama_produk }}</td>
+              <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
+              <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
+              <td>{{ $produk->harga }}</td>
+              <td><img class="img-thumbnail" width="80" src="{{ url('uploads/' . $produk->gambar) }}" alt="product"></td>
+              <td>
+                <a href="{{ route('produk.edit', $produk->id_produk) }}">
+                  <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                </a>
+                <form action="{{ route('produk.destroy', $produk->id_produk) }}" method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  @csrf
+                  <button class="btn btn-danger btn-sm mt-2"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
