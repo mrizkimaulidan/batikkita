@@ -429,6 +429,8 @@
     <script src="{{ url('js/page/index-0.js') }}"></script>
 
     @stack('js')
+
+    @stack('modal')
 </body>
 
 </html>

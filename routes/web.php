@@ -12,13 +12,21 @@
 */
 
 Route::get('/', function () {
-    return redirect('produk');//view('welcome');
+    return redirect('home');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/produk', function () {
+    return redirect('produk'); //view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('kategori','KategoriProdukController');
+Route::resource('kategori', 'KategoriProdukController');
 
-Route::resource('produk','ProdukController');
+Route::resource('produk', 'ProdukController');

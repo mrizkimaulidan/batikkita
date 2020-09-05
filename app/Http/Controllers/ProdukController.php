@@ -16,15 +16,15 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $data_produk = Produk::simplePaginate(10);//all()->toArray();
+        $data_produk = Produk::all(); //all()->toArray();
         $data_kategori = KategoriProduk::all();
-		return view('produk.index', compact('data_produk', 'data_kategori'));
+        return view('produk.index', compact('data_produk', 'data_kategori'));
     }
 
     public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +45,7 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        if(Input::hasFile('gambar')){
+        if (Input::hasFile('gambar')) {
             $produk = new Produk;
             $produk->nama_produk = $request->nama_produk;
             $produk->id_kategori = $request->id_kategori;
@@ -56,7 +56,7 @@ class ProdukController extends Controller
             $file->move('uploads', $file->getClientOriginalName());
             $produk->gambar = $file->getClientOriginalName();
             $produk->save();
-            return redirect('produk')->with('success', 'Produk telah ditambahkan');
+            return redirect('produk')->with('success', 'Produk berhasil ditambahkan!');
         }
     }
 
@@ -81,7 +81,7 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($id);
         $data_kategori = KategoriProduk::all();
-		return view('produk.edit',compact('produk','id', 'data_kategori'));
+        return view('produk.edit', compact('produk', 'id', 'data_kategori'));
     }
 
     /**
@@ -94,9 +94,9 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Produk::find($id);
-		// $this->validate(request(), [
-		// 	'nama_kategori' => 'required'
-		// ]);
+        // $this->validate(request(), [
+        // 	'nama_kategori' => 'required'
+        // ]);
         $produk->nama_produk = $request->get('nama_produk');
         $data_kategori = KategoriProduk::find($request->get('id_kategori'));
         // $produk->id_kategori = $request->get('id_kategori');
@@ -105,13 +105,13 @@ class ProdukController extends Controller
         $produk->kategori()->associate($data_kategori);
         $produk->harga = $request->get('harga');
         $produk->deskripsi = $request->get('deskripsi');
-        if(Input::hasFile('gambar')){
+        if (Input::hasFile('gambar')) {
             $file = Input::file('gambar');
             $file->move('uploads', $file->getClientOriginalName());
             $produk->gambar = $file->getClientOriginalName();
         }
         $produk->save();
-		return redirect('produk')->with('success','Data produk berhasil diupdate');
+        return redirect('produk')->with('success', 'Data produk berhasil diupdate');
     }
 
     /**
@@ -123,7 +123,7 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $produk = Produk::find($id);
-		$produk->delete();
-		return redirect('produk')->with('success','Produk berhasil dihapus');
+        $produk->delete();
+        return redirect('produk')->with('success', 'Produk berhasil dihapus');
     }
 }

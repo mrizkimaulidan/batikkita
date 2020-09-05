@@ -1,74 +1,63 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Daftar Barang'])
 
 @section('content')
-		<div class="container">
-		<h2>Data Produk</h2>
-		<!-- <br /> -->
-		@if (\Session::has('success'))
-		<div class="alert alert-success">
-			<p>{{ \Session::get('success') }}</p>
-		</div>
-		<!-- <br /> -->
-		@endif
-		<div class="row">
-			<div class="col-sm">
-				<a href="{{action('ProdukController@create')}}" class="btn btn-primary">Tambah Produk</a>
-			</div>
-			<div class="col-sm">
-				<a href="{{action('KategoriProdukController@index')}}" >Kategori Produk</a>
-			</div>
-			<!-- <div class="col-sm">
-				<form action="/search" method="POST" role="search">
-					{{ csrf_field() }}
-					<div class="input-group">
-						<input type="text" class="form-control" name="q"
-							placeholder="Cari produk"> <span class="input-group-btn">
-							<button type="submit" class="btn btn-default">
-								<span class="glyphicon glyphicon-search">Submit</span>
-							</button>
-						</span>
-					</div>
-				</form>
-			</div> -->
-			<div class="col-sm">
-				{{ $data_produk->links() }}
-			</div>
-		</div>
-		<br />
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nama Produk</th>
-					<th>Kategori</th>
-					<th>Harga</th>
-					<th>Deskripsi</th>
-					<th>Gambar</th>
-					<th colspan="2">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($data_produk as $produk)
-				<tr>
-					<td>{{$produk['id_produk']}}</td>
-					<td>{{$produk['nama_produk']}}</td>
-					<td>{{$produk->kategori->nama_kategori}}</td>
-					<td>{{$produk['harga']}}</td>
-					<td>{{$produk['deskripsi']}}</td>
-					<td>{{$produk['gambar']}}</td>
-					<td><a href="{{action('ProdukController@edit', $produk['id_produk'])}}" class="btn
-					btn-warning">Edit</a></td>
-					<td>
-						<form action="{{action('ProdukController@destroy', $produk['id_produk'])}}"
-						method="post">
-							{{csrf_field()}}
-							<input name="_method" type="hidden" value="DELETE">
-							<button class="btn btn-danger" type="submit">Delete</button>
-						</form>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-		</div>
+<div class="row">
+    <div class="col-lg-12">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Berhasil! <i class="fas fa-thumbs-up"></i></strong> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        <div class="card px-3 py-3">
+            <div class="d-flex flex-row-reverse my-2">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Data
+                </button>
+            </div>
+            <table class="table" id="datatable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama Produk</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Deskripsi</th>
+                        <th>Gambar</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data_produk as $produk)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $produk->nama_produk }}</td>
+                        <td>{{ $produk->kategori->nama_kategori }}</td>
+                        <td>{{ $produk->harga }}</td>
+                        <td>{{ $produk->deskripsi }}</td>
+                        <td>{{ $produk->gambar }}</td>
+                        <td>
+                            edit | hapus
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('modal')
+@include('produk.create')
+@endpush
+
+@push('js')
+<script>
+    $(document).ready(function() {
+        $("#datatable").DataTable();
+    });
+</script>
+@endpush
