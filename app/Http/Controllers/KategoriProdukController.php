@@ -14,14 +14,14 @@ class KategoriProdukController extends Controller
      */
     public function index()
     {
-        $data_kategori = KategoriProduk::simplePaginate(10);//::all()->toArray();
-		return view('kategori.index', compact('data_kategori'));
+        $data_kategori = KategoriProduk::simplePaginate(10); //::all()->toArray();
+        return view('kategori.index', compact('data_kategori'));
     }
-    
+
     public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -41,10 +41,10 @@ class KategoriProdukController extends Controller
      */
     public function store(Request $request)
     {
-		$kategori = new KategoriProduk;
+        $kategori = new KategoriProduk;
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
-        return redirect('kategori')->with('success', 'Kategori produk telah ditambahkan');
+        return redirect('kategori')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -67,7 +67,7 @@ class KategoriProdukController extends Controller
     public function edit($id)
     {
         $kategori = KategoriProduk::find($id);
-		return view('kategori.edit',compact('kategori','id'));
+        return view('kategori.edit', compact('kategori', 'id'));
     }
 
     /**
@@ -80,12 +80,12 @@ class KategoriProdukController extends Controller
     public function update(Request $request, $id)
     {
         $kategori = KategoriProduk::find($id);
-		$this->validate(request(), [
-			'nama_kategori' => 'required'
-		]);
-		$kategori->nama_kategori = $request->get('nama_kategori');
-		$kategori->save();
-		return redirect('kategori')->with('success','Kategori Produk berhasil diupdate');
+        $this->validate(request(), [
+            'nama_kategori' => 'required'
+        ]);
+        $kategori->nama_kategori = $request->get('nama_kategori');
+        $kategori->save();
+        return redirect('kategori')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -96,8 +96,8 @@ class KategoriProdukController extends Controller
      */
     public function destroy($id)
     {
-		$kategori = KategoriProduk::find($id);
-		$kategori->delete();
-		return redirect('kategori')->with('success','Kategori Produk berhasil dihapus');
+        $kategori = KategoriProduk::find($id);
+        $kategori->delete();
+        return redirect('kategori')->with('success', 'Data berhasil dihapus!');
     }
 }
