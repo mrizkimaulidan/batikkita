@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Produk;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Produk::all();
+        $users = User::all();
+        $latest_products = Produk::latest()->get()->take(5);
+        $expensive_products = Produk::orderBy('harga', 'DESC')->get()->take(5);
+
+        return view('home', compact('products', 'users', 'latest_products', 'expensive_products'));
     }
 }
