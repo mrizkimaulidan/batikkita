@@ -124,6 +124,6 @@ class ProdukController extends Controller
     {
         $produk = Produk::find($id);
         $produk->delete();
-        return redirect('produk')->with('success', 'Produk berhasil dihapus');
+        return redirect('produk')->with('success', 'Produk berhasil dihapus!');
     }
 }
