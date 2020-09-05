@@ -108,6 +108,8 @@
   <!-- Page Specific JS File -->
   <script src="{{ url('js/page/index-0.js') }}"></script>
 
+  <script src="{{ url('js/script.js') }}"></script>
+
   @stack('js')
 
   @stack('modal')
