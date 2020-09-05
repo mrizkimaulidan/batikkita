@@ -41,10 +41,12 @@
                         <td>
                             <a href="{{ route('produk.edit', $produk->id_produk) }}">
                                 <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
-                            </a> |
-                            <a href="{{ route('produk.destroy', $produk->id_produk) }}">
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                             </a>
+                            <form action="{{ route('produk.destroy', $produk->id_produk) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                @csrf
+                                <button class="btn btn-danger btn-sm mt-2"><i class="fas fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
