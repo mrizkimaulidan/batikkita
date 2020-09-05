@@ -37,7 +37,7 @@
             <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
             <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
             <td>{{ $produk->harga }}</td>
-            <td>{{ $produk->gambar }}</td>
+            <td><img class="mr-3 rounded" width="50" src="{{ url('uploads/' . $produk->gambar) }}" alt="product"></td>
             <td>
               <a href="{{ route('produk.edit', $produk->id_produk) }}">
                 <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
