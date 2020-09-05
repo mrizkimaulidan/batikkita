@@ -111,7 +111,7 @@ class ProdukController extends Controller
             $produk->gambar = $file->getClientOriginalName();
         }
         $produk->save();
-        return redirect('produk')->with('success', 'Data produk berhasil diupdate');
+        return redirect('produk')->with('success', 'Produk berhasil diubah!');
     }
 
     /**
