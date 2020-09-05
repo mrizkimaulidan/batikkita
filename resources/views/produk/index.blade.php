@@ -60,11 +60,3 @@
 @push('modal')
 @include('produk.create')
 @endpush
-
-@push('js')
-<script>
-  $(document).ready(function() {
-    $("#datatable").DataTable();
-  });
-</script>
-@endpush
