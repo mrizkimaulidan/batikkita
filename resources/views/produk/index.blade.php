@@ -39,7 +39,12 @@
                         <td>{{ $produk->deskripsi }}</td>
                         <td>{{ $produk->gambar }}</td>
                         <td>
-                            edit | hapus
+                            <a href="{{ route('produk.edit', $produk->id_produk) }}">
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                            </a> |
+                            <a href="{{ route('produk.destroy', $produk->id_produk) }}">
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </a>
                         </td>
                     </tr>
                     @endforeach
