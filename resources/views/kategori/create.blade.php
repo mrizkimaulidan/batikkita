@@ -1,42 +1,30 @@
-@extends('layouts.app')
-
-@section('content')
-		<div class="container">
-			<h2>Membuat Kategori Produk</h2>
-			<!-- <br /> -->
-			@if ($errors->any())
-				<div class="alert alert-danger">
-					<ul>
-						@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-				<!-- <br /> -->
-			@endif
-			@if (\Session::has('success'))
-				<div class="alert alert-success">
-					<p>{{ \Session::get('success') }}</p>
-				</div><br />
-			@endif
-			<form method="post" action="{{url('kategori')}}">
-			{{csrf_field()}}
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="form-group col-md-4">
-						<label for="nama_kategori">Nama kategori:</label>
-						<input type="text" class="form-control" name="nama_kategori">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="form-group col-md-3">
-						<button type="submit" class="btn btn-success">Tambah Kategori Produk</button>
-					</div>
-					<div class="form-group col-md-2">
-						<a href="{{ URL::previous() }}" class="btn btn-primary">Cancel</a>
-					</div>
-				</div>
-			</form>
-		</div>
-@endsection
+<!-- Modal -->
+<div class="modal fade" id="kategori_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ route('kategori.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="nama_kategori">Nama Produk</label>
+                <input type="text" name="nama_kategori" class="form-control" id="nama_kategori" aria-describedby="emailHelp">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

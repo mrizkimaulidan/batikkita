@@ -1,43 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => $kategori->nama_kategori])
 
 @section('content')
-		<div class="container">
-			<h2>Edit Kategori Produk</h2>
-			<!-- <br /> -->
-			@if ($errors->any())
-				<div class="alert alert-danger">
-					<ul>
-						@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-				<!-- <br /> -->
-			@endif
-			@if (\Session::has('success'))
-				<div class="alert alert-success">
-					<p>{{ \Session::get('success') }}</p>
-				</div><br />
-			@endif
-			<form method="post" action="{{action('KategoriProdukController@update',$id)}}">
-			{{csrf_field()}}
-				<input name="_method" type="hidden" value="PATCH">
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="form-group col-md-4">
-						<label for="nama_kategori">Nama kategori:</label>
-						<input type="text" class="form-control" name="nama_kategori" value="{{$kategori->nama_kategori}}">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="form-group col-md-3">
-						<button type="submit" class="btn btn-success">Simpan Kategori Produk</button>
-					</div>
-					<div class="form-group col-md-2">
-						<a href="{{ URL::previous() }}" class="btn btn-primary">Cancel</a>
-					</div>
-				</div>
-			</form>
-		</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card py-3 px-3">
+      <form action="{{ route('kategori.update', $kategori->id_kategori) }}" method="POST" enctype="multipart/form-data">
+        @method('PUT')
+        @csrf
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label for="nama_kategori">Nama Kategori</label>
+              <input type="text" value="{{ $kategori->nama_kategori }}" name="nama_kategori" class="form-control" id="nama_kategori" aria-describedby="emailHelp">
+            </div>
+          </div>
+        </div>
+        <a href="{{ route('kategori.index') }}" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Ubah Data</button>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
