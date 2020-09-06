@@ -30,7 +30,7 @@
               <td>{{ $produk->nama_produk }}</td>
               <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
               <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
-              <td>{{ $produk->harga }}</td>
+              <td>Rp{{ number_format($produk->harga, 2, ',', '.') }}</td>
               <td><img class="img-thumbnail" width="80" src="{{ url('uploads/' . $produk->gambar) }}" alt="product"></td>
               <td>
                 <a href="{{ route('produk.edit', $produk->id_produk) }}">

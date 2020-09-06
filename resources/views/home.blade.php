@@ -72,7 +72,7 @@
             <li class="media">
               <img class="mr-3 rounded" width="50" src="{{ url('uploads/' . $product->gambar) }}" alt="product">
               <div class="media-body">
-                <div class="media-right">{{ $product->harga }}</div>
+                <div class="media-right">Rp{{ number_format($product->harga, 2, ',', '.') }}</div>
                 <div class="media-title">{{ $product->nama_produk }}</div>
                 <div class="text-muted text-small">kategori <a href="">{{ $product->kategori->nama_kategori }}</a></div>
               </div>
