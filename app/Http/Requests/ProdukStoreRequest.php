@@ -26,7 +26,7 @@ class ProdukStoreRequest extends FormRequest
         return [
             'nama_produk' => 'required|min:5|max:191',
             'id_kategori' => 'required',
-            'harga' => 'required|integer',
+            'harga' => 'required|numeric',
             'deskripsi' => 'required|min:5|max:191',
             'gambar' => 'required|image|mimes:png,jpg,jpeg'
         ];
