@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProdukStoreRequest;
 use Illuminate\Http\Request;
 use App\Produk;
 use App\KategoriProduk;
@@ -43,7 +44,7 @@ class ProdukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdukStoreRequest $request)
     {
         if (Input::hasFile('gambar')) {
             $produk = new Produk;
