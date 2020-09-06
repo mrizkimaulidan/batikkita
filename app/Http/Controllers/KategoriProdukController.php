@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\KategoriProdukStoreRequest;
 use Illuminate\Http\Request;
 use App\KategoriProduk;
 
@@ -39,7 +40,7 @@ class KategoriProdukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KategoriProdukStoreRequest $request)
     {
         $kategori = new KategoriProduk;
         $kategori->nama_kategori = $request->nama_kategori;

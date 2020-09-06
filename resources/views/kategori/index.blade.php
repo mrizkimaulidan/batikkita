@@ -3,14 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-    @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Berhasil! <i class="fas fa-thumbs-up"></i></strong> {{ session('success') }}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @endif
+    @include('partials.alert')
     <div class="card px-3 py-3">
       <div class="d-flex flex-row-reverse my-2">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kategori_modal">
