@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="nama_kategori">Nama Produk</label>
+                <label for="nama_kategori">Nama Kategori</label>
                 <input type="text" name="nama_kategori" class="form-control" id="nama_kategori" aria-describedby="emailHelp">
               </div>
             </div>
