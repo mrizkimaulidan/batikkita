@@ -81,7 +81,8 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; {{ config('app.name') }} {{ date('Y') }}
+          Copyright &copy; {{ config('app.name') }}
+          <div class="bullet"></div> {{ date('Y') }}
         </div>
         <div class="footer-right">
           2.3.0
