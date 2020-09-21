@@ -27,9 +27,9 @@
             @foreach($data_produk as $produk)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $produk->nama_produk }}</td>
+              <td>{{ str_limit($produk->nama_produk, 30, '...') }}</td>
               <td>{{ str_limit($produk->deskripsi, 30, '...') }}</td>
-              <td class="badge badge-pill badge-warning mt-1">{{ $produk->kategori->nama_kategori }}</td>
+              <td class="badge badge-pill badge-warning mt-1">{{ str_limit($produk->kategori->nama_kategori, 30, '...') }}</td>
               <td>Rp{{ number_format($produk->harga, 2, ',', '.') }}</td>
               <td><img class="img-thumbnail" width="80" src="{{ url('uploads/' . $produk->gambar) }}" alt="product"></td>
               <td>
