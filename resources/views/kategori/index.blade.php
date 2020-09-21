@@ -23,7 +23,7 @@
             @foreach($data_kategori as $kategori)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $kategori->nama_kategori }}</td>
+              <td>{{ str_limit($kategori->nama_kategori, 30, '...') }}</td>
               <td>
                 <a href="{{ route('kategori.edit', $kategori->id_kategori) }}">
                   <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
