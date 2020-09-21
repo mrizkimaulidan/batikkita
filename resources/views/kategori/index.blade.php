@@ -10,33 +10,35 @@
           Tambah Data
         </button>
       </div>
-      <table class="table" id="datatable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nama Kategori</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($data_kategori as $kategori)
-          <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $kategori->nama_kategori }}</td>
-            <td>
-              <a href="{{ route('kategori.edit', $kategori->id_kategori) }}">
-                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
-              </a>
-              <form action="{{ route('kategori.destroy', $kategori->id_kategori) }}" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                @csrf
-                <button class="btn btn-danger btn-sm mt-2"><i class="fas fa-trash"></i></button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table" id="datatable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nama Kategori</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($data_kategori as $kategori)
+            <tr>
+              <td>{{ $loop->iteration }}</td>
+              <td>{{ $kategori->nama_kategori }}</td>
+              <td>
+                <a href="{{ route('kategori.edit', $kategori->id_kategori) }}">
+                  <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                </a>
+                <form action="{{ route('kategori.destroy', $kategori->id_kategori) }}" method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  @csrf
+                  <button class="btn btn-danger btn-sm mt-2"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
