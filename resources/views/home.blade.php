@@ -70,7 +70,11 @@
           @foreach($expensive_products as $product)
           <ul class="list-unstyled list-unstyled-border">
             <li class="media">
+              @if(file_exists('uploads/' . $product->gambar))
               <img class="mr-3 rounded" width="50" src="{{ url('uploads/' . $product->gambar) }}" alt="{{ str_limit($product->name, 5, '') }}">
+              @else
+              <img class="mr-3 rounded" width="50" src="https://cdn1.iconfinder.com/data/icons/picture-sharing-site-flat/32/No_Image-256.png" title="image not found!">
+              @endif
               <div class="media-body">
                 <div class="media-right">Rp{{ number_format($product->harga, 2, ',', '.') }}</div>
                 <div class="media-title">{{ str_limit($product->nama_produk, 30, '...') }}</div>
